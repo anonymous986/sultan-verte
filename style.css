@@ -1,0 +1,186 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+:root {
+    --primary-color: #e5c641;
+    --text-dark: #222222;
+    --text-light: #737373;
+    --extra-light: #f4f6f6;
+    --white: #ffffff;
+    --max-width: 1200px;
+}
+
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+.section-container {
+    max-width: var(--max-width);
+    margin: auto;
+    padding: 5rem 1rem;
+}
+
+.section-header {
+    position: relative;
+    isolation: isolate;
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: var(--text-dark);
+}
+
+.section-header::before {
+    position: absolute;
+    bottom: -10px;
+    right: -20px;
+    height: 60px;
+    width: 150px;
+    background-image: url();
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    z-index: -1;
+}
+
+.btn {
+    padding: 0.75rem 1.5rem;
+    outline: none;  
+    border: none;
+    font-size: 1rem;
+    color: var(--white);
+    white-space: nowrap;
+    background-color: var(--text-dark);
+    border-radius: 5px;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: var(--primary-color);
+}
+
+img {
+    display: flex;
+    width: 100%;
+}
+
+a {
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+ul {
+    list-style: none;
+}
+
+html, body {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "poppins", sans-serif;
+}
+
+nav {
+    position: fixed;
+    isolation: isolate;
+    width: 100%;
+    z-index: 9;
+}
+
+.nav-header {
+    padding: 1rem;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--primary-color);
+}
+
+.nav-logo a{
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--white);
+}
+
+.nav-menu-btn {
+    font-size: 1.5rem;
+    color: var(--white);
+    cursor: pointer;
+}
+
+.nav-links {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 2rem;
+    padding: 2rem;
+    background-color: var(--primary-color);
+    transition: transform 0.5s;
+    z-index: -1;
+}
+
+.nav-links.open {
+    transform: translateY(100%)
+}
+
+.nav-links a {
+    font-weight: 500;
+    color: var(--white);
+    white-space: nowrap;
+}
+
+.nav-links a:hover {
+    color: var(--text-dark);
+}
+
+@media (width > 768px) {
+    nav{
+        position: static;
+        max-width: var(--max-width);
+        margin-inline: auto;
+        padding: 2rem 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 2rem;
+    }
+
+    .nav-header{
+        padding: 0;
+        background-color: transparent;
+    }
+
+    .nav-logo a{
+        font-size: 1.75rem;
+        color: var(--text-dark);
+    }
+
+    .nav-menu-btn {
+        display: none;
+    }
+
+    .nav-links{
+        position: static;
+        padding: 0;
+        flex-direction: row;
+        justify-content: flex-end;
+        background-color: transparent;
+        transform: none;
+    }
+
+    .nav-links a {
+        color: var(--text-dark);
+        font-size: 1rem;
+    }
+
+    .nav-links a:hover {
+        color: var(--primary-color);
+    }
+
+}
