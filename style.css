@@ -4,6 +4,8 @@
     --primary-color: #F5E4D0;
     --text-dark: #361305;
     --text-light: #af3f13;
+    --btn: rgb(136, 0, 0);
+    --btn-dark: rgb(66, 0, 0);
     --extra-light: #f4f6f6;
     --white: #ffffff;
     --max-width: 1200px;
@@ -13,6 +15,7 @@
     margin: 0px;
     padding: 0px;
     box-sizing: border-box;
+    background: var(--primary-color);
 }
 
 .section-container {
@@ -49,14 +52,14 @@
     font-size: 1rem;
     color: var(--white);
     white-space: nowrap;
-    background-color: var(--text-light);
+    background-color: var(--btn);
     border-radius: 5px;
     transition: 0.3s;
     cursor: pointer;
 }
 
 .btn:hover {
-    background-color: var(--text-dark);
+    background-color: var(--btn-dark);
 }
 
 img {
@@ -101,15 +104,16 @@ nav {
     font-size: 1.5rem;
     font-weight: 800;
     color: var(--white);
+    display: flex;
 }
 
 .nav-logo img {
-    width: 50px;
+    width: 60px;
 }
 
 .nav-menu-btn {
     font-size: 1.5rem;
-    color: var(--white);
+    color: var(--btn);
     cursor: pointer;
 }
 
@@ -142,6 +146,64 @@ nav {
 .nav-links a:hover {
     color: var(--text-dark);
 }
+
+header {
+    padding-top: 5rem;
+    padding-inline: 1rem;
+    margin-bottom: 5rem;
+    overflow: hidden;
+}
+
+.header-container {
+   padding: 0;
+   max-width: calc(var(--max-width) - 2rem);
+   display: grid;
+   background-color: var(--primary-color);
+   border-radius: 2rem;
+}
+
+.header-content{
+    padding: 5rem 2rem;
+}
+
+.header-content h1 {
+    margin-bottom: 1rem;
+    font-size: 4rem;
+    font-weight: 900;
+    line-height: 5.5rem;
+    color: var(--text-dark);
+    text-align: center;
+}
+
+.header-content h1 span {
+    position: relative;
+    isolation: isolate;
+}
+
+.header-content h1 span:before {
+    position: absolute;
+    content: "";
+    top: 0;
+    left: -1rem;
+    height: 100%;
+    width: calc(100% + 4 rem);
+    transform: rotate(-2deg);
+    z-index: -1;
+}
+
+.header-content h1 span:nth-child(1)::before {
+    background-color: var(--text-light);
+}
+
+.header-content h1 span:nth-child(4)::before {
+    background-color: var(--text-light);
+}
+
+
+
+
+
+
 
 @media (width > 768px) {
     nav{
