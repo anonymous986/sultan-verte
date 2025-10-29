@@ -2,8 +2,8 @@
 
 :root {
     --primary-color: #F5E4D0;
-    --text-dark: #222222;
-    --text-light: #737373;
+    --text-dark: #361305;
+    --text-light: #af3f13;
     --extra-light: #f4f6f6;
     --white: #ffffff;
     --max-width: 1200px;
@@ -49,14 +49,14 @@
     font-size: 1rem;
     color: var(--white);
     white-space: nowrap;
-    background-color: var(--text-dark);
+    background-color: var(--text-light);
     border-radius: 5px;
     transition: 0.3s;
     cursor: pointer;
 }
 
 .btn:hover {
-    background-color: var(--primary-color);
+    background-color: var(--text-dark);
 }
 
 img {
@@ -135,7 +135,7 @@ nav {
 
 .nav-links a {
     font-weight: 500;
-    color: var(--white);
+    color: var(--text-light);
     white-space: nowrap;
 }
 
@@ -183,12 +183,12 @@ nav {
     }
 
     .nav-links a {
-        color: var(--text-dark);
+        color: var(--text-light);
         font-size: 1rem;
     }
 
     .nav-links a:hover {
-        color: var(--primary-color);
+        color: var(--text-dark);
     }
 
 }
