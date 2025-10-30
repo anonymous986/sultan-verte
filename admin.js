@@ -150,7 +150,7 @@ function renderCustomProducts() {
       <div class="custom-product-info">
         <h4>${product.title}</h4>
         <p>${product.label}</p>
-        <p class="price">$${product.price.toFixed(2)}</p>
+        <p class="price">Rs ${product.price.toFixed(2)}</p>
         <span class="category-badge">${categoryNames[product.category]}</span>
       </div>
       <button class="delete-product-btn" data-id="${product.id}" data-category="${product.category}">

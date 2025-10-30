@@ -5,21 +5,21 @@ const defaultProducts = {
       image: 'assets/asset1.png',
       title: 'Drop Shoulder T-shirts',
       label: 'New Collection',
-      price: 29.99
+      price: 2500
     },
     {
       id: 'arr2',
       image: 'assets/asset5.png',
       title: 'Back Printed',
       label: 'Limited Edition',
-      price: 34.99
+      price: 2500
     },
     {
       id: 'arr3',
       image: 'assets/asset6.png',
       title: 'Back/Front Printed',
       label: 'Premium Design',
-      price: 39.99
+      price: 2500
     }
   ],
   favorites: [
@@ -28,14 +28,14 @@ const defaultProducts = {
       image: 'assets/asset7.png',
       title: 'Trending on Instagram',
       label: 'Hot Item',
-      price: 32.99
+      price: 2500
     },
     {
       id: 'fav2',
       image: 'assets/asset2.png',
       title: 'All under $40',
       label: 'Best Value',
-      price: 24.99
+      price: 2500
     }
   ],
   bestSelling: {
@@ -43,7 +43,7 @@ const defaultProducts = {
     image: 'assets/asset2.png',
     title: 'Back Printed (Porsche)',
     description: 'Our signature back printed t-shirt featuring an exclusive Porsche design. Premium quality cotton with vibrant prints.',
-    price: 44.99
+    price: 2500
   },
   allProducts: []
 };
@@ -153,7 +153,7 @@ function renderArrivalCards() {
         <div>
           <h4>${product.title}</h4>
           <p class="product__label">${product.label}</p>
-          <p class="product__price">$${product.price.toFixed(2)}</p>
+          <p class="product__price">Rs ${product.price.toFixed(2)}</p>
         </div>
         <div class="card__actions">
           <button class="add-to-cart-btn" data-product-id="${product.id}">
@@ -187,7 +187,7 @@ function renderFavoriteCards() {
         <div>
           <h4>${product.title}</h4>
           <p class="product__label">${product.label}</p>
-          <p class="product__price">$${product.price.toFixed(2)}</p>
+          <p class="product__price">Rs ${product.price.toFixed(2)}</p>
         </div>
         <div class="card__actions">
           <button class="add-to-cart-btn" data-product-id="${product.id}">
@@ -298,7 +298,7 @@ function renderAllProducts() {
       <div class="product__content">
         <h4>${product.title}</h4>
         <p class="product__label">${product.label}</p>
-        <p class="product__price">$${product.price.toFixed(2)}</p>
+        <p class="product__price">Rs ${product.price.toFixed(2)}</p>
         <button class="add-to-cart-btn" data-product-id="${product.id}">
           <i class="ri-shopping-cart-line"></i> Add to Cart
         </button>
