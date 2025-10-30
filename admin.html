@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" type="text/css"/>
+    <link rel="stylesheet" href="admin.css" type="text/css"/>
+    <title>Admin Panel | Sultan Verite</title>
+    <link rel="icon" href="./assets/svlogo.jpg">
+  </head>
+  <body>
+    <nav>
+      <div class="nav__header">
+        <div class="nav__logo">
+          <a href="index.html">
+            <img src="./assets/svlogo.jpg" alt="sultan verte" style="width: 80px;">
+          </a>
+        </div>
+        <div class="nav__menu__btn" id="menu-btn">
+          <i class="ri-menu-line"></i>
+        </div>
+      </div>
+      <ul class="nav__links" id="nav-links">
+        <li><a href="index.html">HOME</a></li>
+        <li><a href="index.html#catalogue">CATALOGUE</a></li>
+        <li><a href="admin.html" style="color: var(--btn-light);">ADMIN</a></li>
+        <li><a href="cart.html" class="cart-link">
+          <i class="ri-shopping-cart-2-line"></i>
+          <span class="cart-count">0</span>
+        </a></li>
+      </ul>
+    </nav>
+
+    <div class="admin-page">
+      <div class="section__container admin__container">
+        <h1 class="section__header">Admin Panel</h1>
+        <p class="admin-subtitle">Add new products to your collection</p>
+
+        <div class="admin-content">
+          <div class="admin-form-section">
+            <h2>Add New Product</h2>
+            
+            <form id="product-form" class="product-form">
+              <div class="form-group">
+                <label for="product-category">Category</label>
+                <select id="product-category" required>
+                  <option value="">Select Category</option>
+                  <option value="arrivals">New Arrivals</option>
+                  <option value="favorites">Young's Favourite</option>
+                  <option value="bestSelling">Best Selling (Featured)</option>
+                  <option value="allProducts">Products Page</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="product-image">Product Image</label>
+                <div class="image-upload-area" id="image-upload-area">
+                  <input type="file" id="product-image" accept="image/*" required hidden>
+                  <label for="product-image" class="image-upload-label">
+                    <i class="ri-image-add-line"></i>
+                    <span>Click to upload image</span>
+                  </label>
+                  <div id="image-preview" class="image-preview" style="display: none;">
+                    <img id="preview-img" src="" alt="Preview">
+                    <button type="button" class="remove-image-btn" id="remove-image">
+                      <i class="ri-close-circle-fill"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="product-title">Product Title</label>
+                <input type="text" id="product-title" placeholder="e.g., Back Printed T-shirt" required>
+              </div>
+
+              <div class="form-group">
+                <label for="product-label">Product Label</label>
+                <input type="text" id="product-label" placeholder="e.g., Limited Edition" required>
+              </div>
+
+              <div class="form-group" id="description-group" style="display: none;">
+                <label for="product-description">Description</label>
+                <textarea id="product-description" rows="3" placeholder="Product description (for best selling)"></textarea>
+              </div>
+
+              <div class="form-group">
+                <label for="product-price">Price ($)</label>
+                <input type="number" id="product-price" placeholder="29.99" step="0.01" min="0" required>
+              </div>
+
+              <button type="submit" class="btn submit-btn">
+                <i class="ri-add-line"></i> Add Product
+              </button>
+            </form>
+          </div>
+
+          <div class="admin-products-section">
+            <h2>Custom Products</h2>
+            <div class="custom-products-list" id="custom-products-list">
+              <p class="no-products">No custom products added yet.</p>
+            </div>
+            <button class="btn clear-all-btn" id="clear-all-btn" style="display: none;">
+              <i class="ri-delete-bin-line"></i> Clear All Custom Products
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <div class="section__container footer__container">
+        <div class="footer__col">
+          <div class="footer__logo">
+            <a href="index.html">FASHION</a>
+          </div>
+          <p>Complete your style with awesome clothes from us.</p>
+          <ul class="footer__socials">
+            <li>
+              <a href="https://www.facebook.com/share/1DgWidoZQ8/?mibextid=wwXIfr" target="_blank"><i class="ri-facebook-fill"></i></a>
+            </li>
+            <li>
+              <a href="https://www.instagram.com/sultan_verite/" target="_blank"><i class="ri-instagram-line"></i></a>
+            </li>
+            <li>
+              <a href="https://whatsapp.com/dl/" target="_blank"><i class="ri-whatsapp-fill"></i></a>
+            </li>
+          </ul>
+        </div>
+        <div class="footer__col">
+          <h4>Company</h4>
+          <ul class="footer__links">
+            <li><a href="#">About</a></li>
+            <li><a href="#">Contact Us</a></li>
+            <li><a href="#">Support</a></li>
+            <li><a href="#">Careers</a></li>
+          </ul>
+        </div>
+        <div class="footer__col">
+          <h4>Quick Links</h4>
+          <ul class="footer__links">
+            <li><a href="https://www.facebook.com/share/1DgWidoZQ8/?mibextid=wwXIfr" target="_blank">facebook</a></li>
+            <li><a href="https://www.instagram.com/sultan_verite/" target="_blank">instagram DM</a></li>
+            <li><a href="#">Size Guide</a></li>
+            <li><a href="https://www.instagram.com/sultan_verite/">FAQs</a></li>
+          </ul>
+        </div>
+        <div class="footer__col">
+          <h4>Legal</h4>
+          <ul class="footer__links">
+            <li><a href="#">Terms & Conditions</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer__bar">
+        Copyright © 2024 Sultan Verite | FASHION. All rights reserved.
+      </div>
+    </footer>
+
+    <script src="products.js"></script>
+    <script src="admin.js"></script>
+  </body>
+</html>

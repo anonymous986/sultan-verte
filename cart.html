@@ -8,86 +8,75 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="style.css" type="text/css"/>
-    <title> Sultan Verite | FASHION</title>
+    <link rel="stylesheet" href="cart.css" type="text/css"/>
+    <title>Shopping Cart | Sultan Verite</title>
     <link rel="icon" href="./assets/svlogo.jpg">
   </head>
   <body>
     <nav>
       <div class="nav__header">
         <div class="nav__logo">
-          <img src="./assets/svlogo.jpg" alt="sultan verte" style="width: 80px;">
+          <a href="index.html">
+            <img src="./assets/svlogo.jpg" alt="sultan verte" style="width: 80px;">
+          </a>
         </div>
         <div class="nav__menu__btn" id="menu-btn">
           <i class="ri-menu-line"></i>
         </div>
       </div>
       <ul class="nav__links" id="nav-links">
-        <li><a href="#catalogue">CATALOGUE</a></li>
-        <li><a href="products.html">PRODUCTS</a></li>
-        <li><a href="#fashion">BEST SELLING</a></li>
-        <li><a href="#favourite">FAVOURITE</a></li>
+        <li><a href="index.html">HOME</a></li>
+        <li><a href="index.html#catalogue">CATALOGUE</a></li>
+        <li><a href="index.html#fashion">FASHION</a></li>
+        <li><a href="index.html#favourite">FAVOURITE</a></li>
         <li><a href="cart.html" class="cart-link">
           <i class="ri-shopping-cart-2-line"></i>
           <span class="cart-count">0</span>
         </a></li>
       </ul>
     </nav>
-    <header>
-      <div class="section__container header__container">
-        <div class="header__content">
-          <h1>
-            <span>LET'S</span>
-            <br />
-            EXPLORE
-            <br />
-            <span>UNIQUE</span>
-            <br />
-            CLOTHES.
-          </h1>
-          <p>Live for influential and innovative fashion!</p>
-          <div class="header__btns">
-            <button class="btn">Shop Now</button>
+
+    <div class="cart-page">
+      <div class="section__container cart__container">
+        <h1 class="section__header">Shopping Cart</h1>
+        
+        <div id="empty-cart" class="empty-cart" style="display: none;">
+          <i class="ri-shopping-cart-line"></i>
+          <h3>Your cart is empty</h3>
+          <p>Add some amazing products to get started!</p>
+          <a href="index.html" class="btn">Continue Shopping</a>
+        </div>
+
+        <div id="cart-content" class="cart-content">
+          <div class="cart-items" id="cart-items">
           </div>
-        </div>
-        <div class="header__image">
-          <img src="assets/asset3.png" alt="header" />
-        </div>
-      </div>
-    </header>
 
-    <section class="section__container arrival__container" id="catalogue">
-      <h2 class="section__header">NEW ARRIVALS</h2>
-      <div class="arrival__grid">
-      </div>
-    </section>
-
-    <section class="sale" id="fashion">
-      <div class="section__container sale__container">
-        <div class="sale__image">
-          <img src="assets/asset2.png" alt="sale" />
-        </div>
-        <div class="sale__content">
-          <h2><span>BEST SELLING</span></h2>
-          <p>Back printed (porsche)</p>
-          <p class="sale__price">$44.99</p>
-          <div class="sale__btn">
-            <button class="btn">Add to Cart</button>
+          <div class="cart-summary">
+            <h3>Order Summary</h3>
+            <div class="summary-row">
+              <span>Subtotal:</span>
+              <span id="subtotal">$0.00</span>
+            </div>
+            <div class="summary-row">
+              <span>Shipping:</span>
+              <span>Free</span>
+            </div>
+            <div class="summary-row total">
+              <span>Total:</span>
+              <span id="total">$0.00</span>
+            </div>
+            <button class="btn checkout-btn">Proceed to Checkout</button>
+            <a href="index.html" class="continue-shopping">Continue Shopping</a>
           </div>
         </div>
       </div>
-    </section>
-
-    <section class="section__container favourite__container" id="favourite">
-      <h2 class="section__header">YOUNG'S FAVOURITE</h2>
-      <div class="favourite__grid">
-      </div>
-    </section>
+    </div>
 
     <footer>
       <div class="section__container footer__container">
         <div class="footer__col">
           <div class="footer__logo">
-            <a href="#">FASHION</a>
+            <a href="index.html">FASHION</a>
           </div>
           <p>Complete your style with awesome clothes from us.</p>
           <ul class="footer__socials">
@@ -133,8 +122,7 @@
       </div>
     </footer>
 
-    <script src="https://unpkg.com/scrollreveal"></script>
     <script src="products.js"></script>
-    <script src="app.js"></script>
+    <script src="cart.js"></script>
   </body>
 </html>

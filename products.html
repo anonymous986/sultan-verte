@@ -8,86 +8,47 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="style.css" type="text/css"/>
-    <title> Sultan Verite | FASHION</title>
+    <title>All Products | Sultan Verite</title>
     <link rel="icon" href="./assets/svlogo.jpg">
   </head>
   <body>
     <nav>
       <div class="nav__header">
         <div class="nav__logo">
-          <img src="./assets/svlogo.jpg" alt="sultan verte" style="width: 80px;">
+          <a href="index.html">
+            <img src="./assets/svlogo.jpg" alt="sultan verte" style="width: 80px;">
+          </a>
         </div>
         <div class="nav__menu__btn" id="menu-btn">
           <i class="ri-menu-line"></i>
         </div>
       </div>
       <ul class="nav__links" id="nav-links">
-        <li><a href="#catalogue">CATALOGUE</a></li>
-        <li><a href="products.html">PRODUCTS</a></li>
-        <li><a href="#fashion">BEST SELLING</a></li>
-        <li><a href="#favourite">FAVOURITE</a></li>
+        <li><a href="index.html">HOME</a></li>
+        <li><a href="index.html#catalogue">CATALOGUE</a></li>
+        <li><a href="products.html" style="color: var(--btn-light);">PRODUCTS</a></li>
         <li><a href="cart.html" class="cart-link">
           <i class="ri-shopping-cart-2-line"></i>
           <span class="cart-count">0</span>
         </a></li>
       </ul>
     </nav>
-    <header>
-      <div class="section__container header__container">
-        <div class="header__content">
-          <h1>
-            <span>LET'S</span>
-            <br />
-            EXPLORE
-            <br />
-            <span>UNIQUE</span>
-            <br />
-            CLOTHES.
-          </h1>
-          <p>Live for influential and innovative fashion!</p>
-          <div class="header__btns">
-            <button class="btn">Shop Now</button>
-          </div>
-        </div>
-        <div class="header__image">
-          <img src="assets/asset3.png" alt="header" />
-        </div>
-      </div>
-    </header>
 
-    <section class="section__container arrival__container" id="catalogue">
-      <h2 class="section__header">NEW ARRIVALS</h2>
-      <div class="arrival__grid">
-      </div>
-    </section>
+    <div class="products-page">
+      <div class="section__container products__container">
+        <h1 class="section__header">All Products</h1>
+        <p class="products-subtitle">Discover our complete collection</p>
 
-    <section class="sale" id="fashion">
-      <div class="section__container sale__container">
-        <div class="sale__image">
-          <img src="assets/asset2.png" alt="sale" />
-        </div>
-        <div class="sale__content">
-          <h2><span>BEST SELLING</span></h2>
-          <p>Back printed (porsche)</p>
-          <p class="sale__price">$44.99</p>
-          <div class="sale__btn">
-            <button class="btn">Add to Cart</button>
-          </div>
+        <div class="products__grid">
         </div>
       </div>
-    </section>
-
-    <section class="section__container favourite__container" id="favourite">
-      <h2 class="section__header">YOUNG'S FAVOURITE</h2>
-      <div class="favourite__grid">
-      </div>
-    </section>
+    </div>
 
     <footer>
       <div class="section__container footer__container">
         <div class="footer__col">
           <div class="footer__logo">
-            <a href="#">FASHION</a>
+            <a href="index.html">FASHION</a>
           </div>
           <p>Complete your style with awesome clothes from us.</p>
           <ul class="footer__socials">
@@ -133,7 +94,6 @@
       </div>
     </footer>
 
-    <script src="https://unpkg.com/scrollreveal"></script>
     <script src="products.js"></script>
     <script src="app.js"></script>
   </body>
