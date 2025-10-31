@@ -478,13 +478,13 @@ header {
 .favourite__content h4 {
   font-size: 1.5rem;
   font-weight: 500;
-  color: var(--text-dark);
+  color: var(--white);
 }
 
 .favourite__content a {
   font-size: 1.2rem;
   font-weight: 500;
-  color: var(--text-light);
+  color: var(--white);
 }
 
 .favourite__content a:hover {
@@ -493,7 +493,7 @@ header {
 
 .favourite__content span {
   font-size: 1.5rem;
-  color: var(--text-light);
+  color: var(--white);
 }
 
 .favourite__card .product__label {
@@ -501,7 +501,7 @@ header {
 }
 
 .favourite__card .product__price {
-  color: var(--text-dark);
+  color: var(--white);
 }
 
 .download__container {
