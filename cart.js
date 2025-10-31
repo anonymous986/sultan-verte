@@ -39,7 +39,7 @@ function renderCart() {
       <div class="cart-item__details">
         <h4>${item.title}</h4>
         <p>${item.label}</p>
-        <p class="cart-item__price">$${item.price.toFixed(2)}</p>
+        <p class="cart-item__price">Rs ${item.price.toFixed(2)}</p>
       </div>
       <div class="cart-item__actions">
         <div class="quantity-controls">
@@ -113,8 +113,8 @@ function updateCartSummary() {
   const cart = getCart();
   const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
   
-  document.getElementById('subtotal').textContent = `$${subtotal.toFixed(2)}`;
-  document.getElementById('total').textContent = `$${subtotal.toFixed(2)}`;
+  document.getElementById('subtotal').textContent = `Rs ${subtotal.toFixed(2)}`;
+  document.getElementById('total').textContent = `Rs ${subtotal.toFixed(2)}`;
 }
 
 document.addEventListener('DOMContentLoaded', () => {
