@@ -179,7 +179,7 @@ header {
   padding: 0;
   max-width: calc(var(--max-width) - 2rem);
   display: grid;
-  background-color: var(--secondary-color);
+  background-color: var(--primary-color);
   border-radius: 2rem;
 }
 
@@ -199,25 +199,6 @@ header {
 .header__content h1 span {
   position: relative;
   isolation: isolate;
-}
-
-.header__content h1 span::before {
-  position: absolute;
-  content: "";
-  top: 0;
-  left: -1rem;
-  height: 100%;
-  width: calc(100% + 4rem);
-  transform: rotate(-2deg);
-  z-index: -1;
-}
-
-.header__content h1 span:nth-child(1)::before {
-  background-color: var(--white);
-}
-
-.header__content h1 span:nth-child(4)::before {
-  background-color: var(--primary-color);
 }
 
 .header__content p {
@@ -402,6 +383,7 @@ header {
   font-size: 5rem;
   font-weight: 800;
   line-height: 5.75rem;
+  color: var(--extra-light);
 }
 
 .sale__content h2 span {
@@ -416,8 +398,8 @@ header {
   left: -1rem;
   height: calc(100% - 10px);
   width: calc(100% + 4rem);
-  background-color: var(--white);
-  transform: rotate(-2deg);
+  background-color: var(--secondary-color);
+  padding-bottom: 10px;
   z-index: -1;
 }
 
@@ -442,8 +424,8 @@ header {
 }
 
 .sale__btn .btn:hover {
-  color: var(--text-dark);
-  background-color: var(--white);
+  color: var(--white);
+  background-color: var(--btn-dark);
 }
 
 .favourite__container {
@@ -840,7 +822,7 @@ footer {
     background-color: transparent;
   }
 
-  .nav__logo a {
+  .nav__logo img {
     font-size: 1.75rem;
     color: var(--text-dark);
   }
