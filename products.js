@@ -88,21 +88,24 @@ function saveCart(cart) {
   updateCartCount();
 }
 
-function addToCart(product) {
+function addToCart(product, quantity = 1) {
+  // Sanitize quantity: must be a positive integer, default to 1 if invalid
+  const sanitizedQty = Math.max(1, Math.floor(Number(quantity) || 1));
+  
   const cart = getCart();
   const existingItem = cart.find(item => item.id === product.id);
   
   if (existingItem) {
-    existingItem.quantity += 1;
+    existingItem.quantity += sanitizedQty;
   } else {
     cart.push({
       ...product,
-      quantity: 1
+      quantity: sanitizedQty
     });
   }
   
   saveCart(cart);
-  showToast('Added to Cart!');
+  showToast(sanitizedQty > 1 ? `Added ${sanitizedQty} items to Cart!` : 'Added to Cart!');
 }
 
 function updateCartCount() {
@@ -203,19 +206,8 @@ function renderFavoriteCards() {
 }
 
 function attachCartListeners() {
-  const addToCartButtons = document.querySelectorAll('.add-to-cart-btn');
-  addToCartButtons.forEach(button => {
-    button.addEventListener('click', (e) => {
-      e.preventDefault();
-      const productId = button.getAttribute('data-product-id');
-      const product = findProductById(productId);
-      if (product) {
-        addToCart(product);
-        button.classList.add('added');
-        setTimeout(() => button.classList.remove('added'), 600);
-      }
-    });
-  });
+  // Empty function - event delegation is now used in DOMContentLoaded
+  // This is kept for compatibility
 }
 
 function findProductById(id) {
@@ -317,5 +309,29 @@ if (typeof document !== 'undefined') {
     renderBestSelling();
     renderAllProducts();
     updateCartCount();
+    
+    // Use event delegation for cart buttons to prevent duplicate listeners
+    document.body.addEventListener('click', (e) => {
+      const cartBtn = e.target.closest('.add-to-cart-btn');
+      if (cartBtn) {
+        e.preventDefault();
+        const productId = cartBtn.getAttribute('data-product-id');
+        const product = findProductById(productId);
+        if (product) {
+          addToCart(product);
+          cartBtn.classList.add('added');
+          setTimeout(() => cartBtn.classList.remove('added'), 600);
+        }
+      }
+      
+      // Handle product card clicks for details page
+      const productCard = e.target.closest('.arrival__card, .favourite__card, .product__card');
+      if (productCard && !e.target.closest('.add-to-cart-btn')) {
+        const productId = productCard.querySelector('.add-to-cart-btn')?.getAttribute('data-product-id');
+        if (productId) {
+          window.location.href = `product-details.html?id=${productId}`;
+        }
+      }
+    });
   });
 }

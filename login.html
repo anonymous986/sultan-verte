@@ -8,7 +8,8 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="style.css" type="text/css"/>
-    <title>All Products | Sultan Verite</title>
+    <link rel="stylesheet" href="auth.css" type="text/css"/>
+    <title>Login | Sultan Verite</title>
     <link rel="icon" href="./assets/svlogo.jpg">
   </head>
   <body>
@@ -25,8 +26,7 @@
       </div>
       <ul class="nav__links" id="nav-links">
         <li><a href="index.html">HOME</a></li>
-        <li><a href="index.html#catalogue">CATALOGUE</a></li>
-        <li><a href="products.html" style="color: var(--btn-light);">PRODUCTS</a></li>
+        <li><a href="products.html">PRODUCTS</a></li>
         <li><a href="cart.html" class="cart-link">
           <i class="ri-shopping-cart-2-line"></i>
           <span class="cart-count">0</span>
@@ -34,12 +34,61 @@
       </ul>
     </nav>
 
-    <div class="products-page">
-      <div class="section__container products__container">
-        <h1 class="section__header">All Products</h1>
-        <p class="products-subtitle">Discover our complete collection</p>
+    <div class="auth-page">
+      <div class="auth-container">
+        <div class="auth-card">
+          <h1>Welcome Back</h1>
+          <p class="auth-subtitle">Login to your account</p>
 
-        <div class="products__grid">
+          <form id="login-form" class="auth-form">
+            <div class="form-group">
+              <label for="email">
+                <i class="ri-mail-line"></i>
+                Email
+              </label>
+              <input type="email" id="email" placeholder="Enter your email" required>
+            </div>
+
+            <div class="form-group">
+              <label for="password">
+                <i class="ri-lock-line"></i>
+                Password
+              </label>
+              <input type="password" id="password" placeholder="Enter your password" required>
+            </div>
+
+            <div class="form-options">
+              <label class="checkbox-label">
+                <input type="checkbox" id="remember">
+                <span>Remember me</span>
+              </label>
+              <a href="#" class="forgot-password">Forgot password?</a>
+            </div>
+
+            <button type="submit" class="btn auth-btn">
+              <i class="ri-login-line"></i> Login
+            </button>
+
+            <div class="auth-divider">
+              <span>or continue with</span>
+            </div>
+
+            <div class="social-login">
+              <button type="button" class="social-btn google-btn">
+                <i class="ri-google-fill"></i>
+                Google
+              </button>
+              <button type="button" class="social-btn facebook-btn">
+                <i class="ri-facebook-fill"></i>
+                Facebook
+              </button>
+            </div>
+
+            <div class="auth-switch">
+              Don't have an account?
+              <a href="signup.html">Sign up</a>
+            </div>
+          </form>
         </div>
       </div>
     </div>
@@ -51,17 +100,6 @@
             <a href="index.html">FASHION</a>
           </div>
           <p>Complete your style with awesome clothes from us.</p>
-          <ul class="footer__socials">
-            <li>
-              <a href="https://www.facebook.com/share/1DgWidoZQ8/?mibextid=wwXIfr" target="_blank"><i class="ri-facebook-fill"></i></a>
-            </li>
-            <li>
-              <a href="https://www.instagram.com/sultan_verite/" target="_blank"><i class="ri-instagram-line"></i></a>
-            </li>
-            <li>
-              <a href="https://whatsapp.com/dl/" target="_blank"><i class="ri-whatsapp-fill"></i></a>
-            </li>
-          </ul>
         </div>
         <div class="footer__col">
           <h4>Company</h4>
@@ -69,16 +107,6 @@
             <li><a href="#">About</a></li>
             <li><a href="#">Contact Us</a></li>
             <li><a href="#">Support</a></li>
-            <li><a href="#">Careers</a></li>
-          </ul>
-        </div>
-        <div class="footer__col">
-          <h4>Quick Links</h4>
-          <ul class="footer__links">
-            <li><a href="https://www.facebook.com/share/1DgWidoZQ8/?mibextid=wwXIfr" target="_blank">facebook</a></li>
-            <li><a href="https://www.instagram.com/sultan_verite/" target="_blank">instagram DM</a></li>
-            <li><a href="#">Size Guide</a></li>
-            <li><a href="https://www.instagram.com/sultan_verite/">FAQs</a></li>
           </ul>
         </div>
         <div class="footer__col">
