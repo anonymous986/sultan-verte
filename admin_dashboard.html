@@ -14,14 +14,14 @@
     <div class="dashboard-container">
         <aside class="sidebar">
             <div class="sidebar__logo">
-                <img src="./assets/svlogo-removebg-preview.png" alt="sultan verte" />
+                <a href="index.html"><img src="./assets/svlogo-removebg-preview.png" alt="sultan verte" /></a>
             </div>
             <ul class="sidebar__nav">
                 <li><a href="#" class="sidebar__nav-item active" data-target="dashboard"><i class="ri-dashboard-line"></i><span>Dashboard</span></a></li>
                 <li><a href="#" class="sidebar__nav-item" data-target="orders"><i class="ri-shopping-bag-3-line"></i><span>Orders</span></a></li>
                 <li><a href="#" class="sidebar__nav-item" data-target="products"><i class="ri-t-shirt-line"></i><span>Products</span></a></li>
                 <li><a href="#" class="sidebar__nav-item" data-target="users"><i class="ri-group-line"></i><span>Users</span></a></li>
-                <li><a href="index.html" class="sidebar__nav-item"><i class="ri-logout-box-r-line"></i><span>Logout</span></a></li>
+                <li><a href="index.html" id="logout-btn" class="sidebar__nav-item"><i class="ri-logout-box-r-line"></i><span>Logout</span></a></li>
             </ul>
         </aside>
         <main class="main-content">
@@ -184,5 +184,7 @@
     </div>
 
     <script src="admin_dashboard.js"></script>
+    <script src="auth.js"></script>
+    <script src="nav.js"></script>
 </body>
 </html>
