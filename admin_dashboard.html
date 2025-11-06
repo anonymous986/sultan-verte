@@ -17,36 +17,11 @@
                 <img src="./assets/svlogo-removebg-preview.png" alt="sultan verte" />
             </div>
             <ul class="sidebar__nav">
-                <li>
-                    <a href="#" class="sidebar__nav-item active" data-target="dashboard">
-                        <i class="ri-dashboard-line"></i>
-                        <span>Dashboard</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#" class="sidebar__nav-item" data-target="orders">
-                        <i class="ri-shopping-bag-3-line"></i>
-                        <span>Orders</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#" class="sidebar__nav-item" data-target="products">
-                        <i class="ri-t-shirt-line"></i>
-                        <span>Products</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#" class="sidebar__nav-item" data-target="users">
-                        <i class="ri-group-line"></i>
-                        <span>Users</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="index.html" class="sidebar__nav-item">
-                        <i class="ri-logout-box-r-line"></i>
-                        <span>Logout</span>
-                    </a>
-                </li>
+                <li><a href="#" class="sidebar__nav-item active" data-target="dashboard"><i class="ri-dashboard-line"></i><span>Dashboard</span></a></li>
+                <li><a href="#" class="sidebar__nav-item" data-target="orders"><i class="ri-shopping-bag-3-line"></i><span>Orders</span></a></li>
+                <li><a href="#" class="sidebar__nav-item" data-target="products"><i class="ri-t-shirt-line"></i><span>Products</span></a></li>
+                <li><a href="#" class="sidebar__nav-item" data-target="users"><i class="ri-group-line"></i><span>Users</span></a></li>
+                <li><a href="index.html" class="sidebar__nav-item"><i class="ri-logout-box-r-line"></i><span>Logout</span></a></li>
             </ul>
         </aside>
         <main class="main-content">
@@ -55,71 +30,19 @@
                     <h1>Welcome, Admin</h1>
                     <p>Here is the summary of your store.</p>
                 </div>
-                <div class="header__user">
-                    <i class="ri-admin-line"></i>
-                    <span>Admin</span>
-                </div>
+                <div class="header__user"><i class="ri-admin-line"></i><span>Admin</span></div>
             </header>
 
             <div class="dashboard-tabs">
                 <section id="dashboard" class="tab-content active">
-                    <div class="dashboard-overview">
-                        <div class="overview-card">
-                            <div class="card-icon"><i class="ri-shopping-cart-2-line"></i></div>
-                            <div class="card-info">
-                                <h3>Total Orders</h3>
-                                <p>1,250</p>
-                            </div>
-                        </div>
-                        <div class="overview-card">
-                            <div class="card-icon"><i class="ri-currency-line"></i></div>
-                            <div class="card-info">
-                                <h3>Total Revenue</h3>
-                                <p>Rs 250,000</p>
-                            </div>
-                        </div>
-                        <div class="overview-card">
-                            <div class="card-icon"><i class="ri-group-line"></i></div>
-                            <div class="card-info">
-                                <h3>Total Users</h3>
-                                <p>5,340</p>
-                            </div>
-                        </div>
-                    </div>
+                    <!-- Dashboard Overview -->
                 </section>
 
                 <section id="orders" class="tab-content">
                     <h2>Order Management</h2>
                     <div class="table-container">
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>Order ID</th>
-                                    <th>Customer</th>
-                                    <th>Date</th>
-                                    <th>Total</th>
-                                    <th>Status</th>
-                                    <th>Action</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>#1234</td>
-                                    <td>John Doe</td>
-                                    <td>2024-07-28</td>
-                                    <td>Rs 3,500</td>
-                                    <td><span class="status shipped">Shipped</span></td>
-                                    <td><button class="btn btn-sm">View</button></td>
-                                </tr>
-                                <tr>
-                                    <td>#1235</td>
-                                    <td>Jane Smith</td>
-                                    <td>2024-07-28</td>
-                                    <td>Rs 1,999</td>
-                                    <td><span class="status pending">Pending</span></td>
-                                    <td><button class="btn btn-sm">View</button></td>
-                                </tr>
-                            </tbody>
+                        <table id="order-table-body">
+                            <!-- Orders will be rendered here -->
                         </table>
                     </div>
                 </section>
@@ -128,105 +51,53 @@
                     <h2>Product Management</h2>
                     <div class="admin-content">
                         <div class="admin-form-section">
-                            <h3>Add New Product</h3>
-                            <form id="product-form" class="product-form">
-                                <div class="form-group">
-                                    <label for="product-category">Category</label>
-                                    <select id="product-category" required>
-                                        <option value="">Select Category</option>
-                                        <option value="arrivals">New Arrivals</option>
-                                        <option value="favorites">Young's Favourite</option>
-                                        <option value="bestSelling">Best Selling (Featured)</option>
-                                        <option value="allProducts">Products Page</option>
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <label for="product-image">Product Image</label>
-                                    <input type="file" id="product-image" accept="image/*" required>
-                                </div>
-                                <div class="form-group">
-                                    <label for="product-title">Product Title</label>
-                                    <input type="text" id="product-title" placeholder="e.g., Back Printed T-shirt" required>
-                                </div>
-                                <div class="form-group">
-                                    <label for="product-label">Product Label</label>
-                                    <input type="text" id="product-label" placeholder="e.g., Limited Edition" required>
-                                </div>
-                                <div class="form-group">
-                                    <label for="product-price">Price (Rs)</label>
-                                    <input type="number" id="product-price" placeholder="2000.00" step="0.01" min="0" required>
-                                </div>
-                                <button type="submit" class="btn submit-btn">Add Product</button>
+                            <h3>Add/Edit Product</h3>
+                            <form id="product-form">
+                                <!-- Form fields -->
+                                <input type="hidden" id="product-edit-index">
+                                <button type="submit" id="product-submit-btn" class="btn submit-btn">Add Product</button>
                             </form>
                         </div>
                         <div class="admin-products-section">
                             <h3>Product List</h3>
-                            <div class="table-container">
-                                <table>
-                                    <thead>
-                                        <tr>
-                                            <th>ID</th>
-                                            <th>Image</th>
-                                            <th>Title</th>
-                                            <th>Price</th>
-                                            <th>Category</th>
-                                            <th>Action</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>1</td>
-                                            <td><img src="assets/asset1.png" alt="product" width="50"></td>
-                                            <td>Back Printed (Porsche)</td>
-                                            <td>Rs 1999</td>
-                                            <td>Best Selling</td>
-                                            <td>
-                                                <button class="btn btn-sm">Edit</button>
-                                                <button class="btn btn-sm btn-danger">Delete</button>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
+                            <div id="product-list-container" class="product-list-grid"></div>
                         </div>
                     </div>
                 </section>
 
                 <section id="users" class="tab-content">
-                    <h2>User Management</h2>
-                    <div class="table-container">
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>User ID</th>
-                                    <th>Name</th>
-                                    <th>Email</th>
-                                    <th>Joined Date</th>
-                                    <th>Action</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>#5678</td>
-                                    <td>John Doe</td>
-                                    <td>john.doe@example.com</td>
-                                    <td>2024-01-15</td>
-                                    <td><button class="btn btn-sm btn-danger">Delete</button></td>
-                                </tr>
-                                <tr>
-                                    <td>#5679</td>
-                                    <td>Jane Smith</td>
-.                                   <td>jane.smith@example.com</td>
-                                    <td>2024-02-20</td>
-                                    <td><button class="btn btn-sm btn-danger">Delete</button></td>
-                                </tr>
-                            </tbody>
-                        </table>
+                     <h2>User Management</h2>
+                    <div class="admin-content" style="grid-template-columns: 1fr 2fr;">
+                        <div class="admin-form-section">
+                            <h3>Add New User</h3>
+                            <form id="user-form">
+                                <!-- User form fields -->
+                                <button type="submit" class="btn submit-btn">Add User</button>
+                            </form>
+                        </div>
+                        <div class="admin-products-section">
+                            <h3>User List</h3>
+                            <div class="table-container">
+                                <table id="user-table-body">
+                                    <!-- Users will be rendered here -->
+                                </table>
+                            </div>
+                        </div>
                     </div>
                 </section>
             </div>
         </main>
     </div>
+
+    <!-- Order Details Modal -->
+    <div id="order-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h2>Order Details</h2>
+            <!-- Modal content -->
+        </div>
+    </div>
+
     <script src="admin_dashboard.js"></script>
 </body>
 </html>
