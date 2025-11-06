@@ -1,223 +1,79 @@
-// User Authentication System using localStorage
-// NOTE: This is a demonstration system for a static website
-// For production use, implement proper backend authentication
 
-// Simple hash function using Web Crypto API
-async function hashPassword(password) {
-  const encoder = new TextEncoder();
-  const data = encoder.encode(password);
-  const hashBuffer = await crypto.subtle.digest('SHA-256', data);
-  const hashArray = Array.from(new Uint8Array(hashBuffer));
-  return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
-}
+document.addEventListener('DOMContentLoaded', () => {
+    // --- FORM REFERENCES ---
+    const loginForm = document.getElementById('login-form');
+    const signupForm = document.getElementById('signup-form');
 
-function getCurrentUser() {
-  const user = localStorage.getItem('currentUser');
-  return user ? JSON.parse(user) : null;
-}
+    // --- ADMIN CREDENTIALS ---
+    const ADMIN_EMAIL = 'admin@sultanverite.com';
+    const ADMIN_PASSWORD = 'admin123';
 
-function getAllUsers() {
-  const users = localStorage.getItem('users');
-  return users ? JSON.parse(users) : [];
-}
+    // --- SIGNUP LOGIC ---
+    if (signupForm) {
+        signupForm.addEventListener('submit', (e) => {
+            e.preventDefault();
 
-function saveUsers(users) {
-  localStorage.setItem('users', JSON.stringify(users));
-}
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
 
-async function loginUser(email, password) {
-  const users = getAllUsers();
-  const passwordHash = await hashPassword(password);
-  const user = users.find(u => u.email === email && u.passwordHash === passwordHash);
-  
-  if (user) {
-    const userData = { ...user };
-    delete userData.passwordHash; // Don't store password hash in session
-    localStorage.setItem('currentUser', JSON.stringify(userData));
-    return { success: true, user: userData };
-  }
-  
-  return { success: false, message: 'Invalid email or password' };
-}
+            // Get existing users or initialize an empty array
+            let users = JSON.parse(localStorage.getItem('users')) || [];
 
-async function signupUser(name, email, password) {
-  const users = getAllUsers();
-  
-  // Check if user already exists
-  if (users.find(u => u.email === email)) {
-    return { success: false, message: 'Email already registered' };
-  }
-  
-  // Hash password before storing
-  const passwordHash = await hashPassword(password);
-  
-  // Create new user
-  const newUser = {
-    id: Date.now().toString(),
-    name,
-    email,
-    passwordHash,
-    createdAt: new Date().toISOString()
-  };
-  
-  users.push(newUser);
-  saveUsers(users);
-  
-  // Auto login after signup
-  const userData = { ...newUser };
-  delete userData.passwordHash;
-  localStorage.setItem('currentUser', JSON.stringify(userData));
-  
-  return { success: true, user: userData };
-}
+            // Check if user already exists
+            const userExists = users.some(user => user.email === email);
 
-function logoutUser() {
-  localStorage.removeItem('currentUser');
-  window.location.href = 'index.html';
-}
+            if (userExists) {
+                alert('An account with this email already exists. Please log in.');
+                return;
+            }
 
-// Update navbar based on login status
-function updateNavbar() {
-  const user = getCurrentUser();
-  const navLinks = document.getElementById('nav-links');
-  
-  if (!navLinks) return;
-  
-  // Remove existing auth links
-  const existingAuthLinks = navLinks.querySelectorAll('.auth-nav-item');
-  existingAuthLinks.forEach(item => item.remove());
-  
-  if (user) {
-    // User is logged in - show user menu
-    const userMenuItem = document.createElement('li');
-    userMenuItem.className = 'auth-nav-item user-menu';
-    userMenuItem.innerHTML = `
-      <div class="user-dropdown">
-        <button class="user-btn">
-          <i class="ri-user-line"></i>
-          <span>${user.name}</span>
-          <i class="ri-arrow-down-s-line"></i>
-        </button>
-        <div class="dropdown-menu">
-          <a href="#"><i class="ri-user-line"></i> Profile</a>
-          <a href="#"><i class="ri-shopping-bag-line"></i> Orders</a>
-          <a href="#"><i class="ri-settings-line"></i> Settings</a>
-          <hr>
-          <a href="#" class="logout-btn"><i class="ri-logout-line"></i> Logout</a>
-        </div>
-      </div>
-    `;
-    
-    // Insert before cart
-    const cartLink = navLinks.querySelector('.cart-link');
-    if (cartLink && cartLink.parentElement) {
-      navLinks.insertBefore(userMenuItem, cartLink.parentElement);
-    } else {
-      navLinks.appendChild(userMenuItem);
+            // Add new user
+            const newUser = {
+                name,
+                email,
+                password, // In a real app, hash this password!
+                joined: new Date().toISOString().slice(0, 10)
+            };
+            users.push(newUser);
+
+            // Save updated user list
+            localStorage.setItem('users', JSON.stringify(users));
+
+            alert('Signup successful! Please log in.');
+            window.location.href = 'login.html';
+        });
     }
-    
-    // Add logout listener
-    const logoutBtn = userMenuItem.querySelector('.logout-btn');
-    if (logoutBtn) {
-      logoutBtn.addEventListener('click', (e) => {
-        e.preventDefault();
-        logoutUser();
-      });
-    }
-    
-    // Toggle dropdown
-    const userBtn = userMenuItem.querySelector('.user-btn');
-    const dropdownMenu = userMenuItem.querySelector('.dropdown-menu');
-    if (userBtn && dropdownMenu) {
-      userBtn.addEventListener('click', (e) => {
-        e.stopPropagation();
-        dropdownMenu.classList.toggle('show');
-      });
-      
-      // Close dropdown when clicking outside
-      document.addEventListener('click', () => {
-        dropdownMenu.classList.remove('show');
-      });
-    }
-  } else {
-    // User is not logged in - show login/signup links
-    const loginItem = document.createElement('li');
-    loginItem.className = 'auth-nav-item';
-    loginItem.innerHTML = '<a href="login.html"><i class="ri-login-line"></i> Login</a>';
-    
-    const signupItem = document.createElement('li');
-    signupItem.className = 'auth-nav-item';
-    signupItem.innerHTML = '<a href="signup.html" class="signup-link"><i class="ri-user-add-line"></i> Sign Up</a>';
-    
-    // Insert before cart
-    const cartLink = navLinks.querySelector('.cart-link');
-    if (cartLink && cartLink.parentElement) {
-      navLinks.insertBefore(signupItem, cartLink.parentElement);
-      navLinks.insertBefore(loginItem, cartLink.parentElement);
-    } else {
-      navLinks.appendChild(loginItem);
-      navLinks.appendChild(signupItem);
-    }
-  }
-}
 
-// Handle login form
-if (document.getElementById('login-form')) {
-  document.getElementById('login-form').addEventListener('submit', async (e) => {
-    e.preventDefault();
-    
-    const email = document.getElementById('email').value;
-    const password = document.getElementById('password').value;
-    
-    const result = await loginUser(email, password);
-    
-    if (result.success) {
-      showToast('Login successful!');
-      setTimeout(() => {
-        window.location.href = 'index.html';
-      }, 1000);
-    } else {
-      showToast(result.message);
-    }
-  });
-}
+    // --- LOGIN LOGIC ---
+    if (loginForm) {
+        loginForm.addEventListener('submit', (e) => {
+            e.preventDefault();
 
-// Handle signup form
-if (document.getElementById('signup-form')) {
-  document.getElementById('signup-form').addEventListener('submit', async (e) => {
-    e.preventDefault();
-    
-    const name = document.getElementById('name').value;
-    const email = document.getElementById('email').value;
-    const password = document.getElementById('password').value;
-    const confirmPassword = document.getElementById('confirm-password').value;
-    
-    if (password !== confirmPassword) {
-      showToast('Passwords do not match!');
-      return;
-    }
-    
-    if (password.length < 6) {
-      showToast('Password must be at least 6 characters!');
-      return;
-    }
-    
-    const result = await signupUser(name, email, password);
-    
-    if (result.success) {
-      showToast('Account created successfully!');
-      setTimeout(() => {
-        window.location.href = 'index.html';
-      }, 1000);
-    } else {
-      showToast(result.message);
-    }
-  });
-}
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
 
-// Initialize navbar on page load
-if (typeof document !== 'undefined') {
-  document.addEventListener('DOMContentLoaded', () => {
-    updateNavbar();
-  });
-}
+            // Check for Admin Login
+            if (email === ADMIN_EMAIL && password === ADMIN_PASSWORD) {
+                // Set a session for the admin
+                sessionStorage.setItem('loggedInUser', JSON.stringify({ name: 'Admin', email: ADMIN_EMAIL, isAdmin: true }));
+                alert('Admin login successful!');
+                window.location.href = 'admin_dashboard.html';
+                return;
+            }
+
+            // Check for Regular User Login
+            const users = JSON.parse(localStorage.getItem('users')) || [];
+            const foundUser = users.find(user => user.email === email && user.password === password);
+
+            if (foundUser) {
+                // Set a session for the user
+                sessionStorage.setItem('loggedInUser', JSON.stringify({ name: foundUser.name, email: foundUser.email, isAdmin: false }));
+                alert(`Welcome back, ${foundUser.name}!`);
+                window.location.href = 'index.html'; 
+            } else {
+                alert('Invalid email or password. Please try again or sign up.');
+            }
+        });
+    }
+});
